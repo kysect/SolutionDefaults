@@ -11,6 +11,7 @@
     <RepositoryUrl>https://github.com/kysect/SolutionDefaults</RepositoryUrl>
     <PackageProjectUrl>https://github.com/kysect/SolutionDefaults</PackageProjectUrl>
     <PackageReadmeFile>Readme.md</PackageReadmeFile>
+    <PackageIcon>Icon.png</PackageIcon>
   </PropertyGroup>
 
   <PropertyGroup Label="Build">
@@ -28,6 +29,14 @@
     <Deterministic>true</Deterministic>
     <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
+
+  <ItemGroup Label="DefaultIcon">
+    <None Include="../Images/Default-icon.png">
+      <Visible>false</Visible>
+      <Pack>true</Pack>
+      <PackagePath>/Icon.png</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MinVer">

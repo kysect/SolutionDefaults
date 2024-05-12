@@ -46,13 +46,14 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
 
+  <PropertyGroup Label="DefaultIcon" Condition="$(SolutionDefaultsUseIcon) != false ">
+    <PackageIcon>Icon.png</PackageIcon>
+  </PropertyGroup>
   <ItemGroup Label="DefaultIcon" Condition="$(SolutionDefaultsUseIcon) != false ">
-    <PackageIcon>$(MSBuildThisFileDirectory)../content/Default-icon.png</PackageIcon>
-    <None>
+    <None Include="$(MSBuildThisFileDirectory)../content/Default-icon.png">
       <Visible>false</Visible>
-      <Include>$(MSBuildThisFileDirectory)../content/Default-icon.png</Include>
       <Pack>true</Pack>
-      <PackagePath>/</PackagePath>
+      <PackagePath>/Icon.png</PackagePath>
     </None>
   </ItemGroup>
 
