@@ -1,0 +1,38 @@
+<Project>
+  <PropertyGroup Label="Package">
+    <Authors>Kysect</Authors>
+    <Company>Kysect</Company>
+    <Copyright>(c) Kysect 2024</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+
+    <Title>Kysect.SolutionDefaults</Title>
+    <Description>Kysect.SolutionDefaults is nuget package for sharing and sync solution configuration, .editorconfig and other files between repositories.</Description>
+    <RepositoryUrl>https://github.com/kysect/SolutionDefaults</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/kysect/SolutionDefaults</PackageProjectUrl>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Build">
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
+    <LangVersion>latest</LangVersion>
+    <UseArtifactsOutput>true</UseArtifactsOutput>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <DebugType>portable</DebugType>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+    <Deterministic>true</Deterministic>
+    <NeutralLanguage>en-US</NeutralLanguage>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MinVer">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <NoDefaultExcludes>true</NoDefaultExcludes>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../Readme.md" Pack="true" PackagePath="/" />
+    <None Include="Kysect.SolutionDefaults.props" Pack="true" PackagePath="/build/Kysect.SolutionDefaults.props" />
+    <None Include=".editorconfig" Pack="true" PackagePath="/content/" />
+    <None Include="../Images/Default-icon.png" Pack="true" PackagePath="/content/" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,72 @@
+<Project>
+  <PropertyGroup>
+    <SolutionDefaultsUseMetadataOptions Condition="$(SolutionDefaultsUseMetadataOptions) == ''">true</SolutionDefaultsUseMetadataOptions>
+    <SolutionDefaultsUseLicense Condition="$(SolutionDefaultsUseLicense) == ''">true</SolutionDefaultsUseLicense>
+    <SolutionDefaultsUseAnalyzersOptions Condition="$(SolutionDefaultsUseAnalyzersOptions) == ''">true</SolutionDefaultsUseAnalyzersOptions>
+    <SolutionDefaultsUseBuildOptions Condition="$(SolutionDefaultsUseBuildOptions) == ''">true</SolutionDefaultsUseBuildOptions>
+    <SolutionDefaultsUsePublishOptions Condition="$(SolutionDefaultsUsePublishOptions) == ''">true</SolutionDefaultsUsePublishOptions>
+    <SolutionDefaultsCopyEditorConfig Condition="$(SolutionDefaultsCopyEditorConfig) == ''">true</SolutionDefaultsCopyEditorConfig>
+    <SolutionDefaultsUseIcon Condition="$(SolutionDefaultsUseIcon) == ''">true</SolutionDefaultsUseIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Metadata" Condition="$(SolutionDefaultsUseMetadataOptions) != false">
+    <Authors>Kysect</Authors>
+    <Company>Kysect</Company>
+    <Copyright>(c) Kysect 2024</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Label="License" Condition="$(SolutionDefaultsUseLicense) != false">
+    <PackageLicenseExpression Condition="$(SolutionDefaultsUseLicense) != false">MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <PropertyGroup Lable="Analyzers" Condition="$(SolutionDefaultsUseAnalyzersOptions) != false">
+    <Nullable>enable</Nullable>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <NoWarn Condition="$(IsTestProject) == 'true'">$(NoWarn);CA1707</NoWarn>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Build" Condition="$(SolutionDefaultsUseBuildOptions) != false">
+    <LangVersion>latest</LangVersion>
+    <UseArtifactsOutput>true</UseArtifactsOutput>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+    <NeutralLanguage>en-US</NeutralLanguage>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Publish" Condition="$(SolutionDefaultsUsePublishOptions) != false">
+    <RepositoryType>git</RepositoryType>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <DebugType>portable</DebugType>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <ItemGroup Label="DefaultIcon" Condition="$(SolutionDefaultsUseIcon) != false ">
+    <PackageIcon>$(MSBuildThisFileDirectory)../content/Default-icon.png</PackageIcon>
+    <None>
+      <Visible>false</Visible>
+      <Include>$(MSBuildThisFileDirectory)../content/Default-icon.png</Include>
+      <Pack>true</Pack>
+      <PackagePath>/</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <!-- *Undefined* is deafult value when dotnet try to build one project -->
+  <Target
+    Name="SolutionDefaultsCopyEditorConfig"
+    BeforeTargets="BeforeBuild"
+    Condition="$(SolutionDir) != '*Undefined*' and $(SolutionDir) != '' and $(SolutionDefaultsCopyEditorConfig) != 'false'">
+    <EditorConfigFilePath Include="$(MSBuildThisFileDirectory)../content/.editorconfig" />
+    <Message Text="Copying the .editorconfig file from '@(EditorConfigFilesToCopy)' to '$(SolutionDir)'"></Message>
+    <Copy
+      SourceFiles="@(EditorConfigFilePath)"
+      DestinationFolder="$(SolutionDir)"
+      SkipUnchangedFiles="true"
+      UseHardlinksIfPossible="false" />
+  </Target>
+</Project>
