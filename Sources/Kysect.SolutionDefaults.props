@@ -31,7 +31,6 @@
 
   <PropertyGroup Label="Build" Condition="$(SolutionDefaultsUseBuildOptions) != false">
     <LangVersion>latest</LangVersion>
-    <UseArtifactsOutput>true</UseArtifactsOutput>
     <ImplicitUsings>enable</ImplicitUsings>
     <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
     <NeutralLanguage>en-US</NeutralLanguage>
