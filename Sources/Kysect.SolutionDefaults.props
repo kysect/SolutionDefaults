@@ -19,7 +19,7 @@
     <PackageLicenseExpression Condition="$(SolutionDefaultsUseLicense) != false">MIT</PackageLicenseExpression>
   </PropertyGroup>
 
-  <PropertyGroup Lable="Analyzers" Condition="$(SolutionDefaultsUseAnalyzersOptions) != false">
+  <PropertyGroup Label="Analyzers" Condition="$(SolutionDefaultsUseAnalyzersOptions) != false">
     <Nullable>enable</Nullable>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
@@ -57,13 +57,16 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <EditorConfigFilePath Include="$(MSBuildThisFileDirectory)../content/.editorconfig" />
+  </ItemGroup>
+
   <!-- *Undefined* is deafult value when dotnet try to build one project -->
   <Target
     Name="SolutionDefaultsCopyEditorConfig"
     BeforeTargets="BeforeBuild"
     Condition="$(SolutionDir) != '*Undefined*' and $(SolutionDir) != '' and $(SolutionDefaultsCopyEditorConfig) != 'false'">
-    <EditorConfigFilePath Include="$(MSBuildThisFileDirectory)../content/.editorconfig" />
-    <Message Text="Copying the .editorconfig file from '@(EditorConfigFilesToCopy)' to '$(SolutionDir)'"></Message>
+    <Message Text="Copying the .editorconfig file from '@(EditorConfigFilePath)' to '$(SolutionDir)'"></Message>
     <Copy
       SourceFiles="@(EditorConfigFilePath)"
       DestinationFolder="$(SolutionDir)"
