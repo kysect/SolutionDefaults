@@ -58,6 +58,7 @@
 
   <ItemGroup>
     <EditorConfigFilePath Include="$(MSBuildThisFileDirectory)../content/.editorconfig" />
+    <GlobalAnalyzerConfigFiles Include="$(MSBuildThisFileDirectory)Kysect.SolutionDefaults.globalconfig" />
   </ItemGroup>
 
   <!-- *Undefined* is deafult value when dotnet try to build one project -->
